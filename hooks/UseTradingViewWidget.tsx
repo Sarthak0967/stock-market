@@ -27,7 +27,7 @@ const UseTradingViewWidget = (scriptUrl: string, config: Record<string, unknown>
                 }
             }
         },
-        [scritptUrl,config,height]
+        [scriptUrl,config,height]
     );
 
     return containerRef;
