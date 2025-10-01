@@ -1,7 +1,7 @@
 "use client"
 import UseTradingViewWidget from '@/hooks/UseTradingViewWidget';
 import { cn } from '@/lib/utils';
-import React, { useEffect, useRef, memo } from 'react';
+import React, { memo } from 'react';
 
 interface TradingViewWidgetProps {
     title?: string;
@@ -11,7 +11,6 @@ interface TradingViewWidgetProps {
     className?: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TradingViewWidget = ({ title, scriptUrl, config, height = 600, className}) => {
   const containerRef = UseTradingViewWidget(scriptUrl, config, height);
 

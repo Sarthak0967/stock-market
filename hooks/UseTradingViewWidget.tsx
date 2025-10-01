@@ -2,7 +2,7 @@
 import React from 'react'
 import { useEffect, useRef } from 'react'
 
-const UseTradingViewWidget = (scritptUrl: string, config: Record<string, unknown>, height = 600) => {
+const UseTradingViewWidget = (scriptUrl: string, config: Record<string, unknown>, height = 600) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(
@@ -13,9 +13,10 @@ const UseTradingViewWidget = (scritptUrl: string, config: Record<string, unknown
             if (containerRef.current.dataset.loaded) return;
             containerRef.current.innerHTML = `<div class="tradingview-widget-container__widget" style="width: 100%; height:${height}px;"></div>`
             const script = document.createElement("script");
-            script.src = scritptUrl;
+            script.src = scriptUrl;
             script.async = true;
-            script.innerHTML = JSON.stringify(config);
+            script.type = "text/javascript";
+            script.textContent = JSON.stringify(config);
             containerRef.current.appendChild(script);
             containerRef.current.dataset.loaded  = 'true';
 
