@@ -10,18 +10,17 @@ export const sendSignupEmail = inngest.createFunction(
         - Country: ${event.data.country}
         - Investment goals: ${event.data.investmentGoals}
         - Risk tolerance: ${event.data.riskTolerance}
-        - Preferred industries: ${event.data.preferredIndustries.join(', ')}
-        `
+        - Preferred industries: ${event.data.preferredIndustry}        `
 
         const prompt = PERSONALIZED_WELCOME_EMAIL_PROMPT.replace('{{userProfile}}', userProfile);
 
-        const response = await step.ai.infer('generate-welcome-intro', {
-            model: step.ai.models.gemini({model: 'gemini=2.5-flash-lite'}),
-                body: {
-                    contents: [
-                        {
-                        role: 'user',
-                        parts: [
+         const response = await step.ai.infer('generate-welcome-intro', {
+            model: step.ai.models.gemini({model: 'gemini-2.5-flash-lite'}),
+            body: {
+                contents: [
+                    {
+                    role: 'user',
+                    parts: [
                             { text: prompt }
                         ]
                     }
