@@ -2,8 +2,13 @@ import React from 'react'
 import Header from '@/components/Header'
 import Link from 'next/link'
 import Image from 'next/image'
+import { auth } from '@/lib/better-auth/auth'
+import { redirect } from 'next/navigation'
+import { headers } from 'next/headers'
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const layout = async ({ children }: { children: React.ReactNode }) => {
+  const session = await auth.api.getSession({ headers: await headers()})
+  if(session?.user) redirect('/')
   return (
     <main className="auth-layout">
       <section className="auth-left-section scrollbar-hide-default">
