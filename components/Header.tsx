@@ -4,8 +4,11 @@ import React from 'react'
 import Image from 'next/image'
 import Navitems from './Navitems'
 import UseDropdown from './UseDropdown'
+import { searchStocks } from '@/lib/actions/finnhub.actions'
 
-const Header = ({user}: { user: User}) => {
+const Header = async ({user}: { user: User}) => {
+  const initialStocks = await searchStocks();
+
   return (
     <header className="sticky top-0 header">
       <div className="container header-wrapper">
@@ -13,10 +16,10 @@ const Header = ({user}: { user: User}) => {
           <Image src="/assets/icons/logo.svg" alt="stockinger-logo" width={140} height={32} className='h-8 w-auto cursor-pointer'/>
         </Link>
         <nav className='hidden sm:block'>
-          <Navitems />
+          <Navitems initialStocks={initialStocks} />
         </nav>
 
-        <UseDropdown user={user} />
+        <UseDropdown user={user} initialStocks={initialStocks} />
       </div>
     </header>
   )
