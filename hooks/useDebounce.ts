@@ -2,7 +2,7 @@
 
 import { useCallback, useRef } from 'react';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export function useDebounce(callback: () => void, delay: number) {
     const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -22,5 +22,4 @@ export function useDebounce(callback: () => void, delay: number) {
 
         timeoutRef.current = setTimeout(callback, delay);
     }, [callback, delay]);
-}
 }
