@@ -1,3 +1,5 @@
+import { Control, FieldError, UseFormRegister, RegisterOptions } from 'react-hook-form';
+
 declare global {
     type SignInFormData = {
         email: string;
@@ -167,6 +169,11 @@ declare global {
     type WatchlistNewsProps = {
         news?: MarketNewsArticle[];
     };
+
+    type UserForNewsEmail = {
+        email: string;
+        name: string;
+    }
 
     type SearchCommandProps = {
         open?: boolean;
