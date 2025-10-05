@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Control, FieldError, UseFormRegister, RegisterOptions } from 'react-hook-form';
 
 declare global {
@@ -16,10 +17,10 @@ declare global {
         preferredIndustry: string;
     };
 
-    type CountrySelectProps = {
+    type CountrySelectProps<T extends import('react-hook-form').FieldValues = import('react-hook-form').FieldValues> = {
         name: string;
         label: string;
-        control: Control;
+        control: Control<T>;
         error?: FieldError;
         required?: boolean;
     };
@@ -41,12 +42,12 @@ declare global {
         label: string;
     };
 
-    type SelectFieldProps = {
+    type SelectFieldProps<TFieldValues extends Record<string, any> = Record<string, any>> = {
         name: string;
         label: string;
         placeholder: string;
         options: readonly Option[];
-        control: Control;
+        control: Control<any>;
         error?: FieldError;
         required?: boolean;
     };
