@@ -42,6 +42,44 @@ const SignUp = () => {
             })
         }
     }
+  }
+  return (
+    <>
+      <h1 className='form-title'>Sign-up & Personalize</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
+        <InputField
+          name="fullName"
+          label="Full Name"
+          placeholder="John Doe"
+          register={register}
+          error={errors.fullName}
+          validation={{ required: true, minLength: 2 }}
+        />
+
+        <InputField
+          name="email"
+          label="Email"
+          placeholder="test@gmail.com"
+          register={register}
+          error={errors.email}
+          validation={{
+            required: 'Email is required',
+            pattern: {
+              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+              message: 'Please enter a valid email address'
+            }
+          }}
+        />
+
+        <InputField
+          name="password"
+          label="Password"
+          placeholder="Enter a password"
+          type='password'
+          register={register}
+          error={errors.password}
+          validation={{ required: 'password is required', minLength: 8 }}
+        />
 
     return (
         <>

@@ -17,7 +17,7 @@ declare global {
         preferredIndustry: string;
     };
 
-    type CountrySelectProps<T extends import('react-hook-form').FieldValues = import('react-hook-form').FieldValues> = {
+    type CountrySelectProps<T = any> = {
         name: string;
         label: string;
         control: Control<T>;
@@ -42,12 +42,13 @@ declare global {
         label: string;
     };
 
-    type SelectFieldProps<TFieldValues extends Record<string, any> = Record<string, any>> = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    type SelectFieldProps<T = any> = {
         name: string;
         label: string;
         placeholder: string;
         options: readonly Option[];
-        control: Control<any>;
+        control: Control<T>;
         error?: FieldError;
         required?: boolean;
     };
