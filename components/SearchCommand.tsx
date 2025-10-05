@@ -57,9 +57,9 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
   return (
     <>
       {renderAs === 'text' ? (
-          <button type="button" onClick={() => setOpen(true)} className="search-text">
+          <span onClick={() => setOpen(true)} className="search-text">
             {label}
-          </button>
+          </span>
       ): (
           <Button onClick={() => setOpen(true)} className="search-btn">
             {label}
@@ -109,5 +109,4 @@ export default function SearchCommand({ renderAs = 'button', label = 'Add stock'
         </CommandList>
       </CommandDialog>
     </>
-  )
-}
+  )}

@@ -35,7 +35,10 @@ const SignupForm = () => {
   const onSubmit = async (data: SignUpFormData) => {
     try {
       const result = await signUpWithEmail(data);
+      if(result.success) toast.success('Signed up successfully');
+      // if(!result.success) toast.error('Sign up failed User exists');
       if (result.success) router.push('/');
+
     } catch (e) {
       console.error(e);
       toast.error('Sign up failed', {

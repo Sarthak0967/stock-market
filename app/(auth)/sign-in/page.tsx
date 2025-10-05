@@ -27,6 +27,8 @@ const SignIn = () => {
         try {
             const result = await signInWithEmail(data);
             if(result.success) router.push('/');
+            if(!result.success) toast.error('Sign in failed Invalid credentials');
+            if(result.success) toast.success('Signed in successfully');
         } catch (e) {
             console.error(e);
             toast.error('Sign in failed', {

@@ -23,7 +23,6 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
 
 export { fetchJSON };
 
-
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
   try {
     const range = getDateRange(5);
@@ -159,12 +158,9 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
       .map((r) => {
         const upper = (r.symbol || '').toUpperCase();
         const name = r.description || upper;
+        const exchangeFromDisplay = (r.displaySymbol as string | undefined) || undefined;
         const exchangeFromProfile = (r as any).__exchange as string | undefined;
-        const displaySymbol = (r.displaySymbol as string | undefined) ?? '';
-        const exchangeFromDisplay = displaySymbol.includes(':')
-          ? displaySymbol.split(':')[0]
-          : undefined;
-        const exchange = exchangeFromProfile || exchangeFromDisplay || 'US';
+        const exchange = exchangeFromDisplay || exchangeFromProfile || 'US';
         const type = r.type || 'Stock';
         const item: StockWithWatchlistStatus = {
           symbol: upper,
