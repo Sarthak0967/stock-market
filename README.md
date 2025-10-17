@@ -1,4 +1,4 @@
-## Resume Section (Copy-Paste Ready)
+
 
 **Full-Stack Developer | Stock Market Dashboard**
 
